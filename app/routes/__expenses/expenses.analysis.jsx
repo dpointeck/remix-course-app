@@ -1,6 +1,5 @@
 import ExpenseStatistics from "~/components/expenses/ExpenseStatistics";
 import Chart from "~/components/expenses/Chart";
-import expensesstyles from "~/styles/expenses.css";
 
 const DUMMY_EXPENSES = [
     {
@@ -27,8 +26,4 @@ export default function AnalyzeExpansesPage() {
         <Chart expenses={DUMMY_EXPENSES}/>
         <ExpenseStatistics expenses={DUMMY_EXPENSES}/>
     </main>
-}
-
-export function links() {
-    return [{ rel: "stylesheet", href: expensesstyles }];
 }
