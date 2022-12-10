@@ -1,26 +1,5 @@
-import { json } from "@remix-run/node"
+import { getExpenses } from "~/data/expenses.server";
 
-export function loader() {
-    const DUMMY_EXPENSES = [
-        {
-            id: 'e1',
-            title: "First Expense",
-            amount: 12.99,
-            date: new Date()
-        },
-        {
-            id: 'e2',
-            title: "First Expense",
-            amount: 142.99,
-            date: new Date('2022-02-21')
-        },
-        {
-            id: 'e3',
-            title: "First Expense",
-            amount: 54.99,
-            date: new Date('2022-05-21')
-        },
-    ]
-
-    return json(DUMMY_EXPENSES)
+export async function loader() {
+    return await getExpenses();
 }

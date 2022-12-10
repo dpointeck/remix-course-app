@@ -7,14 +7,20 @@ import {
     useTransition as useNavigation,
 } from "@remix-run/react";
 
+
+
 function ExpenseForm() {
     const today = new Date().toISOString().slice(0, 10); // yields something like 2023-09-10
     const validationErrors = useActionData();
-    const id = useParams();
+    const params = useParams();
     const matches = useMatches();
-    console.log(matches)
     const expenses = matches.find((match) => match.id === 'routes/__expenses/expenses').data
-    const expenseData = expenses.find(expense => expense.id === id)
+    const expenseData = expenses.find(expense => expense.id === params.id)
+
+    if (params.id && !expenseData) {
+        return <p>Invalid expense id.</p>
+    }
+
     const navigation = useNavigation();
     const isSubmitting = navigation.state != "idle";
     const defaultValues = expenseData
@@ -30,7 +36,7 @@ function ExpenseForm() {
           };
 
     return (
-        <Form method="post" className="form" id="expense-form">
+        <Form method={expenseData ? 'patch' : 'post'} className="form" id="expense-form">
             <p>
                 <label htmlFor="title">Expense Title</label>
                 <input
