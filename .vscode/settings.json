@@ -15,6 +15,7 @@
         "**/Thumbs.db": true,
         "public/build": true,
         "build": true,
-        ".cache": true
+        ".cache": true,
+        "node_modules": true
     }
 }
