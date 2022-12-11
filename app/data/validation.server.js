@@ -30,3 +30,7 @@ function isValidTitle(value) {
       throw validationErrors;
     }
   }
+
+  export function validateCredentials(input) {
+    
+  }
